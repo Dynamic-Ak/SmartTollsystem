@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Map Locator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        #map {
+            width: 100%;
+            display: none;
+        }
+        #map iframe {
+            width: 100%;
+            height: 500px;
+        }
+        #location {
+            position: absolute;
+            top: 550px;
+            width: 80%;
+            left: 10%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        table, th, td {
+            border: 1px solid #000;
+        }
+        th, td {
+            padding: 5px;
+            text-align: center;
+        }
+        input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 4px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            display: block;
+            margin: 5px auto;
+        }
+        #distance {
+            margin-top: 10px;
+            font-size: 14px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="showMap()">Open Map</button>
+    <div id="map">
+        <iframe src="https://www.google.co.in/maps/d/u/0/embed?mid=1uYDlVh_8CDXaO7rRjYJ9mBL066iteko&ehbc=2E312F&noprof=1" frameborder="0"></iframe>
+    </div>
+    <div id="location">
+        <form id="location-form">
+            <table>
+                <tr>
+                    <th>Starting Point</th>
+                    <td><input type="text" id="start-point" name="start-point" placeholder="Enter latitude, longitude"></td>
+                </tr>
+                <tr>
+                    <th>Ending Point</th>
+                    <td><input type="text" id="end-point" name="end-point" placeholder="Enter latitude, longitude"></td>
+                </tr>
+            </table>
+            <button type="button" onclick="saveCoordinates()">Save Coordinates</button>
+        </form>
+        <div id="distance"></div>
+    </div>
+
+    <script>
+        function showMap() {
+            document.getElementById("map").style.display = "block";
+        }
+
+        function saveCoordinates() {
+            // Get the input values
+            const startPoint = document.getElementById('start-point').value;
+            const endPoint = document.getElementById('end-point').value;
+
+            // Split the input values by comma and trim whitespace
+            const [startLat, startLng] = startPoint.split(',').map(val => val.trim());
+            const [endLat, endLng] = endPoint.split(',').map(val => val.trim());
+
+            // Check if values are valid
+            if (isNaN(startLat) || isNaN(startLng) || isNaN(endLat) || isNaN(endLng)) {
+                alert('Please enter valid coordinates in the format: latitude, longitude');
+                return;
+            }
+
+            // Save coordinates in variables
+            const startCoordinates = { latitude: parseFloat(startLat), longitude: parseFloat(startLng) };
+            const endCoordinates = { latitude: parseFloat(endLat), longitude: parseFloat(endLng) };
+
+            // Calculate distance
+            const distance = calculateDistance(startCoordinates, endCoordinates);
+
+            // Display distance
+            document.getElementById('distance').textContent = `Distance travelled: ${distance.toFixed(2)} km`;
+
+            // Log the coordinates and distance to the console (or handle them as needed)
+            console.log('Starting Point:', startCoordinates);
+            console.log('Ending Point:', endCoordinates);
+            console.log('Distance travelled:', distance.toFixed(2), 'km');
+
+            // Optional: You can save the distance to a variable or handle it further
+            const distanceTravelled = distance; // Example variable
+        }
+
+        function calculateDistance(start, end) {
+            // Haversine formula to calculate the distance between two points on the Earth
+            const toRadians = angle => angle * (Math.PI / 180);
+            const earthRadiusKm = 6371;
+
+            const dLat = toRadians(end.latitude - start.latitude);
+            const dLng = toRadians(end.longitude - start.longitude);
+
+            const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+                      Math.cos(toRadians(start.latitude)) * Math.cos(toRadians(end.latitude)) *
+                      Math.sin(dLng / 2) * Math.sin(dLng / 2);
+
+            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+            return earthRadiusKm * c;
+        }
+    </script>
+</body>
+</html>

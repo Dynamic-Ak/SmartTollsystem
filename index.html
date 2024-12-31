@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toll System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!--Header(start)-->
+<table id="header" width="100%">
+    <tr>
+      <td>
+        <table cellpadding="10" width="90%" align="center">
+          <tr>
+            <td><!-- Placeholder for logo --></td>
+            <td><font face="Comic Sans MS" size="6"><b>Toll System</b></font></td>
+            <td width="15%"></td>
+            <td><a href="index.html"><font face="Verdana" size="5" style="color: white;">Home</font></a></td><td>|</td>
+            <td><a href="about.html"><font face="Verdana" size="5">About</font></a></td><td>|</td>
+            <td><a href="tollrates.html"><font face="Verdana" size="5">Toll Rates</font></a></td><td>|</td>
+            <td><a href="services.php"><font face="Verdana" size="5" style="color: rgb(0, 0, 0);">Services</font></a></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <!--Header(end)-->
+
+<!-- heading 2 -->
+<div id="home" style="text-align: center; padding: 20px; width: 100%; margin: auto;">
+    <div style="display: flex; justify-content: flex-start; align-items: center; flex-direction: column;">
+        <h3>
+            <font face="Times New Roman" size="6" color="#ffffff">Welcome to GPS Toll System &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</font>
+        </h3>
+    </div>
+</div>
+
+
+<!--   Register form start -->
+    <h1 style="text-align: center; width: 90%;">Register Here!</h1>
+    <hr>
+    <article>
+        <form action="save.php" method="post">
+            
+<!--             name attribute add for save.php can detect it -->
+            <table border="0" cellpadding="5" cellspacing="5" width="700px" align="center">
+                <tr>
+                    <td><label for="username">Username:</label></td>
+                    <td><input type="text" name='name' id="username" placeholder="Enter your username" required /></td>
+                </tr>
+                <tr>
+                    <td><label for="email">Email ID:</label></td>
+                    <td><input type="email" name="email" id="email_id" placeholder="Enter your email ID" required /></td>
+                </tr>
+                <tr>
+                    <td><label for="phone">Phone number:</label></td>
+                    <td><input type="text" name="phone" id="phone_no" placeholder="Enter your contact number" pattern="+[0-9]{12}" required /></td>
+                </tr>
+                <tr>
+                    <td><label for="carnumber">Car Number Plate:</label></td>
+                    <td><input type="text" name="car_number" id="car_number" placeholder="Enter car number plate" required /></td>
+                </tr>
+                <tr>
+                    <td><label for="accountNo ">Account Number:</label></td>
+                    <td><input type="text" name="accountNo" id="account_number" placeholder="Enter account number" required /></td>
+                </tr>
+                <tr>
+                    <td><label for="amount">Wallet Amount (in ₹) :</label></td>
+                    <td><input type="text"  name="amount" id="amount" placeholder="Enter wallet amount" required /></td>
+                </tr>
+                <tr>
+                    <td><label for="country"   >Country:</label></td>
+                    <td>
+                        <select id="country" name="country" placeholder="Select your country">
+                            <option value="India">India</option>
+                            <option value="USA">USA</option>
+                            <option value="Russia">Russia</option>
+
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label id="lang" >Languages Known:</label></td>
+                    <td>
+                        <input type="checkbox" name="lang[]" id="english" value="English" checked="checked" /><label for="english">English</label>
+                        <input type="checkbox" name="lang[]" id="hindi" value="Hindi" /><label for="hindi">Hindi</label>
+                    </td>
+                </tr>
+
+                <td>
+                     &nbsp;
+                    </td>
+                <tr>
+                    <td align="center"><input type="submit" value=" Register " style="font-size: 20px; background-color: #b913ec; color: white;" /></td>
+
+                    <td align="left"><input type="reset" value=" Reset "  style="font-size: 18px; background-color: #ec1351; color: rgb(0, 0, 0);" /></td>
+                </tr>
+            </table>
+        </form>
+    </article>
+<!-- Register form ends -->
+
+</body>
+
+</html>

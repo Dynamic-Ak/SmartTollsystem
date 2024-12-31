@@ -1,0 +1,63 @@
+body {
+    font-family: 'Verdana', sans-serif;
+}
+#header, #footer{
+    background-color: #a40bd2b1;
+}
+#header a, #footer a {
+    text-decoration: none;
+    color: black;
+}
+#home, #about, #services {
+    background-color: black;
+    color: white;
+}
+
+/* Style for the first table */
+#table1 {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+/* Style for table headers in the first table */
+#table1 thead th {
+    background-color: #f2f2f2;
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #dddddd;
+}
+
+/* Style for table data cells in the first table */
+#table1 tbody td {
+    padding: 10px;
+    text-align: left;
+    border: 1px solid #dddddd;
+}
+
+/* Style for alternating row colors in the first table */
+#table1 tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+
+
+#flowchart {
+    padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+#flowchart img {
+    width: 95%; 
+    height: 450px;
+    border: 5px solid #a911c8ca; 
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#flowchart #img2 {
+    opacity: 0.15; /* Optional: make the second image semi-transparent */
+}

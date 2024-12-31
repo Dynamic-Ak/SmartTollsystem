@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Toll System</title>
+    <link rel="stylesheet" href="style.css">
+
+    <!-- start link to js and email.js-->
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+    (function(){
+    emailjs.init("S-xL9HVNtHJlWCNFv");
+    })();
+    </script>
+    <script src="script.js"></script>
+    <!-- END -->
+
+</head>
+
+<body>
+<!--Header(start)-->
+<table id="header" width="100%">
+    <tr>
+      <td>
+        <table cellpadding="10" width="90%" align="center">
+          <tr>
+            <td><!-- Placeholder for logo --></td>
+            <td><font face="Comic Sans MS" size="6"><b>Toll System</b></font></td>
+            <td width="15%"></td>
+            <td><a href="index.html"><font face="Verdana" size="5">Home</font></a></td><td>|</td>
+            <td><a href="about.html"><font face="Verdana" size="5">About</font></a></td><td>|</td>
+            <td><a href="tollrates.html"><font face="Verdana" size="5" style="color: white;">Toll Rates</font></a></td><td>|</td>
+            <td><a href="services.php"><font face="Verdana" size="5" style="color: rgb(0, 0, 0);">Services</font></a></td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+  <!--Header(end)-->
+
+  <!--   heading 2 -->
+  <div id="tollcalc">
+    <table border="0" cellpadding="10" cellspacing="10" width="80%" align="center">
+        <tr>
+            <td height="150" align="center" valign="middle" colspan="2">
+                <font face="Verdana" size="7" color="purple">Automated Toll Calculation System</font>
+                <hr color="" width="50%">
+            </td>
+        </tr>
+    </table>
+</div> 
+
+<!-- Form Start -->
+<article>
+    <form action="save1.php" method="post">
+        <table border="0" cellpadding="15" cellspacing="5" width="700px" align="center">
+            <tr>
+                <td align="center"><label for="car_number">Car Number Plate:</label></td>
+                <td><input type="text" id="car_number" name="car_number" placeholder="Enter car number plate" required /></td>
+            </tr>
+            <tr>
+                <td align="center"><label for="distance_travelled">Distance Travelled (km):</label></td>
+                <td><input type="number" id="distance_travelled" name="distance_travelled" placeholder="Enter distance travelled" required /></td>
+            </tr>
+            <tr>
+                <td align="center"><label for="average_speed">Average Speed (km/h):</label></td>
+                <td><input type="number" id="average_speed" name="average_speed" placeholder="Enter average speed" required /></td>
+            </tr>
+            <tr>
+                <td align="center"><label for="obu_connection">OBU Connection:</label></td>
+                <td>
+                    <input type="radio" id="obu_green" name="obu_connection" value="green" required />
+                    <label for="obu_green" style="color: green;">Green</label>
+                    <input type="radio" id="obu_red" name="obu_connection" value="red" required />
+                    <label for="obu_red" style="color: red;">Red</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align: center;">
+                    <div style="display: flex; gap: 10px; justify-content: center;">
+                        <a href="GPS_Distance.html">
+                            <button type="button" style="font-family: Verdana; font-size: 20px; margin: 0;">GPS Distance</button>
+                        </a>
+                        <input type="submit" onclick="sendmail1()" value="Submit" style="font-size: 20px; background-color: #b913ec; color: white; margin: 0;" />
+                        <input type="reset" value="Reset" style="font-size: 18px; background-color: #ec1351; color: black; margin: 0;" />
+                    </div>
+                </td>
+            </tr>
+        </table>
+    </form>
+</article>
+  <!-- form end -->
+</body>
+
+</html>
